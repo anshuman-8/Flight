@@ -6,10 +6,9 @@ import java.util.*;
 
 
 public class Flight {
-    ArrayList<ArrayList<String>> flight;
+    ArrayList<ArrayList> flight;
     static int num;
-    Flight(int sr,int flightNumber, String flightName, Date date, Time time, int price){
-        this.flight[0][0].add(sr);
-        }
+    Flight(ArrayList flights){
+        flight.add(flights);
     }
 }
