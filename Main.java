@@ -37,11 +37,12 @@ public class Main {
             System.out.print("Enter flight time: ");
             //aasc.nextLine();
             String fli_tim=sc.nextLine();
-            index[Flight.count]=new Flight(fli_num,fli_from,fli_to,fli_tim,fli_date,price,Flight.count+1);
+            index[Flight.getCount()]=new Flight(fli_num,fli_from,fli_to,fli_tim,fli_date,price,Flight.count+1);
+            System.out.println("\n"+index[Flight.getCount()-1].toString());
 //            newFlight.add(fli_tim);
             //System.out.print("Enter Flight Code(Should be unique): ");
            // ArrayList flightRef[1]=new ArrayList();
-            System.out.println("\nNew flight added to Amrita Domestic\n");
+            System.out.println("New flight added to Amrita Domestic\n");
 //            System.out.println(newFlight);
 //            flightMain.add(newFlight);
             //Flight refVar= new Flight(newFlight);
@@ -60,7 +61,8 @@ public class Main {
 //              catch (Exception e){
 //                  Exception vcxfg=e;
 //              }
-                index[i].toString();
+                System.out.println(index[i].toString());
+                tot++;
             }
             System.out.println("\ntotal "+tot+" displayed");
         }
@@ -70,7 +72,8 @@ public class Main {
     }
 // -----------------------------------------------------------------------------------------------------------------------------------passenger
     protected static void passengerMethod(){
-       
+        System.out.println("\n--Hello!  Welcome to --***Amrita Airlines***--\n ");
+
 
     }
 

@@ -27,6 +27,8 @@ public class Flight {
         this.fprice=price;
         count=ind;
     }
+
+
     public String getFroDesti() {
         return froDesti;
     }
@@ -74,13 +76,16 @@ public class Flight {
     public void setFprice(int fprice) {
         this.fprice = fprice;
     }
+    public static int getCount(){
+        return count;
+    }
 
     @Override
     public String toString() {
         String one = "Flight " + num;
-        String two = "," + froDesti + " to " + toDesti;
-        String three = "," + ftime;
-        String four = ", original price: " + fprice + "Rs.";
+        String two = ", From" + froDesti + " to " + toDesti;
+        String three = ", At" + ftime;
+        String four = ", Original price: " + fprice + "Rs.";
         return one + two + three + four;
     }
 
