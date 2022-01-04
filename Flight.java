@@ -15,7 +15,7 @@ public class Flight {
     private int fprice;
     static int count;
 
-    public Flight(int num,String froDesti, String toDesti, String ftime, String fdate, int price, int ind){
+    public Flight(int num,String froDesti, String toDesti, String ftime, String fdate, int price){
         if (toDesti.equals(froDesti)) {
             throw new IllegalArgumentException("destination and origin are the same");
         }
@@ -25,7 +25,7 @@ public class Flight {
         this.ftime=ftime;
         this.fdate=fdate;
         this.fprice=price;
-        count=ind;
+        //count=ind;
     }
 
 
@@ -83,11 +83,19 @@ public class Flight {
     @Override
     public String toString() {
         String one = "Flight " + num;
-        String two = ", From" + froDesti + " to " + toDesti;
-        String three = ", At" + ftime;
+        String two = ", From " + froDesti + " -> to " + toDesti;
+        String three = ", At " + ftime;
         String four = ", Original price: " + fprice + "Rs.";
         return one + two + three + four;
     }
+    public String toPrint(){
+        String one = "Flight " + num;
+        String two = ", From " + froDesti + " -> to " + toDesti;
+        String three = ", At " + ftime;
+        return one + two + three ;
+    }
+
+
 
     //    static ArrayList<ArrayList> flight;
 //    static int num;
