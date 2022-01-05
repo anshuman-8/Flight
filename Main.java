@@ -1,9 +1,24 @@
 package Flight;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
-    static ArrayList<Flight> index=new ArrayList<Flight>();
+    public static ArrayList<Flight> index=new ArrayList<Flight>();
 //--------------------------------------------------------------------------------------------------------------------------------admin
+    protected static void drama(){
+        System.out.print("Searching");
+        try{
+        TimeUnit.SECONDS.sleep(1);
+            System.out.print(".");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.print(".");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println(".\n");}
+        catch(Exception e){
+            System.out.println();
+    }
+
+}
    protected static void adminMethod(){
         Scanner sc= new Scanner(System.in);
         System.out.println(" Welcome Admin, What do you want to do next: ");
@@ -50,7 +65,7 @@ public class Main {
 
         }
         else if(mainChoice==2){
-            System.out.println("\nEnter The Flight number to be remove: ");
+            System.out.print("\nEnter The Flight number to be remove: ");
             int n=sc.nextInt();
             sc.nextLine();
             for(int j=0;j<200;j++){
@@ -99,10 +114,49 @@ public class Main {
         }
     }
 // -----------------------------------------------------------------------------------------------------------------------------------passenger
-    protected static void passengerMethod(){
-        System.out.println("\n--Hello!  Welcome to --***Amrita Airlines***--\n ");
+    protected static void passengerMethod() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n  Welcome to --***Amrita Airlines***--\n ");
+        System.out.print("Enter your name : ");
+        String name = sc.nextLine();
+        System.out.println(" Hello " + name + " what would you like to do next: ");
+        System.out.println("[1 : Search & Book flight ]");
+        System.out.println("[2 : Check PNR status]");
+        System.out.println("[3 : Cancel ticket ]");
+        byte mainChoice = sc.nextByte();
+        sc.nextLine();
+        if (mainChoice == 1) {
+            System.out.print("Enter the Destination City : ");
+            String to = sc.nextLine();
+            System.out.print("Enter From City : ");
+            String from = sc.nextLine();
+            System.out.print("Enter The Date of Travel(DD-MM-YYYY) : ");
+            String date = sc.nextLine();
+            int f=0;
+            try{
+            for (int j = 0; j < 200; j++) {
+                drama();
 
+                if (index.get(j).getFroDesti() == from && index.get(j).getToDesti() == to && index.get(j).getFdate() == date) {
+                    System.out.println("All the Flights : ");
+                    String fli = index.get(j).toPrint();
+                    System.out.println(fli);
+                    f++;
+                }
+            }
+            }
+                catch(Exception n) {
+                    if (f == 0) {
+                        System.out.println(" No result found,  Try searching for other dates ");
+                    } else {
+                        System.out.println(f + " Flights available \n");
+                        System.out.print("Enter the flight Number to choose: ");
+                        int choseNum = sc.nextInt();
+                        sc.nextLine();
+                    }
 
+                }
+        }
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------main
@@ -134,7 +188,7 @@ public class Main {
                     System.out.println("Incorrect password..Access denied");
                 }
             }
-            else if(inp=="P" || inp=="p"){
+            else if(inp.charAt(0) == 'P' || inp.charAt(0)=='p'){
                 pasWod=2;
                 passengerMethod();
             }
