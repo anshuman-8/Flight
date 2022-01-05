@@ -83,15 +83,15 @@ public class Flight {
     @Override
     public String toString() {
         String one = "Flight " + num;
-        String two = ", From " + froDesti + " -> to " + toDesti;
-        String three = ", At " + ftime;
-        String four = ", Original price: " + fprice + "Rs.";
+        String two = "  From " + froDesti + " -> to " + toDesti;
+        String three = "  At " + ftime;
+        String four = "  Original price: " + fprice + " Rs.";
         return one + two + three + four;
     }
     public String toPrint(){
         String one = "Flight " + num;
-        String two = ", From " + froDesti + " -> to " + toDesti;
-        String three = ", At " + ftime;
+        String two = "  From " + froDesti + " -> to " + toDesti;
+        String three = "  At " + ftime;
         return one + two + three ;
     }
 

@@ -5,8 +5,8 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static ArrayList<Flight> index=new ArrayList<Flight>();
 //--------------------------------------------------------------------------------------------------------------------------------admin
-    protected static void drama(){
-        System.out.print("Searching");
+    protected static void drama(String text){
+        System.out.print(text);
         try{
         TimeUnit.SECONDS.sleep(1);
             System.out.print(".");
@@ -77,7 +77,8 @@ public class Main {
                     String yn=sc.nextLine();
                     if(yn.charAt(0)=='Y' || yn.charAt(0)=='y'){
                         index.remove(j);
-                        System.out.println(fli+" Has been Deleted\n ");
+                        drama("Deleting ");
+                        System.out.println("\n"+fli+" Has been Deleted\n ");
                         break;
                     }
                     else if(yn.charAt(0)=='N' || yn.charAt(0)=='n'){
@@ -125,7 +126,10 @@ public class Main {
         System.out.println("[3 : Cancel ticket ]");
         byte mainChoice = sc.nextByte();
         sc.nextLine();
+
         if (mainChoice == 1) {
+            boolean ch=true;
+            while(ch==true){
             System.out.print("Enter the Destination City : ");
             String to = sc.nextLine();
             System.out.print("Enter From City : ");
@@ -135,11 +139,11 @@ public class Main {
             int f=0;
             try{
             for (int j = 0; j < 200; j++) {
-                drama();
+                drama("Searching");
 
                 if (index.get(j).getFroDesti() == from && index.get(j).getToDesti() == to && index.get(j).getFdate() == date) {
                     System.out.println("All the Flights : ");
-                    String fli = index.get(j).toPrint();
+                    String fli = index.get(j).toString();
                     System.out.println(fli);
                     f++;
                 }
@@ -148,14 +152,51 @@ public class Main {
                 catch(Exception n) {
                     if (f == 0) {
                         System.out.println(" No result found,  Try searching for other dates ");
+                        System.out.println("[Y : Search other flights]    [N : Exit]");
+                        String c=sc.nextLine();
+                        if(c.charAt(0)=='Y' || c.charAt(0)=='y'){
+                            System.out.println();
+                        }
+                        if(c.charAt(0)=='N' || c.charAt(0)=='n'){
+                            ch=false;
+                        }
+                        else{
+                            System.out.println("invalid response");
+                        }
+
                     } else {
                         System.out.println(f + " Flights available \n");
                         System.out.print("Enter the flight Number to choose: ");
                         int choseNum = sc.nextInt();
                         sc.nextLine();
-                    }
+                        System.out.println("Do you want to continue booking ?" );
+                        System.out.println("[Y : Booking]  [A : Search for another flight]  [N : Exit]");
+                        String c=sc.nextLine();
+                        if(c.charAt(0)=='Y' || c.charAt(0)=='y'){
+//                            for(int j=0;j<200;j++){
+//                                if(index.get(j).getNum()==choseNum) {
+//                                    String fli = index.get(j).toPrint();
+//                                    System.out.println(fli);
+//                                    System.out.println("Do you really want to Delete this Flight ? ");
+//                                    System.out.print("[yes: Y]  [No: N]  :");
+//                                    String yn = sc.nextLine();
+//                                }
+//                            }
+                            Booking.book(choseNum,index);
+                        }
+                        else if(c.charAt(0)=='N' || c.charAt(0)=='n'){
+                            ch=false;
+                        }
+                        else if(c.charAt(0)=='A' || c.charAt(0)=='a'){
+                            System.out.println();
+                        }
+                        else{
+                            System.out.println("invalid response");
+                        }
 
+                    }
                 }
+            }
         }
     }
 
