@@ -84,9 +84,10 @@ public class Flight {
     public String toString() {
         String one = "Flight " + num;
         String two = "  From " + froDesti + " -> to " + toDesti;
+        String mid= "  On " +fdate;
         String three = "  At " + ftime;
         String four = "  Original price: " + fprice + " Rs.";
-        return one + two + three + four;
+        return one + two +mid+ three + four;
     }
     public String toPrint(){
         String one = "Flight " + num;

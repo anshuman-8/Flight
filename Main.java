@@ -26,42 +26,34 @@ public class Main {
         System.out.println("[2 : Remove flight]");
         System.out.println("[3 : Display all flights]");
         byte mainChoice=sc.nextByte();
-        //ArrayList flightRef=new ArrayList();
-        //Byte mainComp=-1;
         if(mainChoice==1){
-//            char a=(char) Flight.getNum();
-            //ArrayList newFlight=new ArrayList();
             System.out.println("Scheduling a new flight\n ");
             System.out.print("Enter the flight number: ");
             int fli_num=sc.nextInt();
-//            newFlight.add(fli_num);
             sc.nextLine();
+
             System.out.print("Enter flight from City: ");
-            String fli_from=sc.nextLine();
-//            newFlight.add(fli_from);
+            String fli_from=sc.nextLine().toLowerCase();
+
             System.out.print("Enter flight Destination City: ");
-            String fli_to=sc.nextLine();
-//            newFlight.add(fli_to);
+            String fli_to=sc.nextLine().toLowerCase();
+
             System.out.print("Enter cost per ticket: ");
             int price=sc.nextInt();
-//            newFlight.add(price);
             sc.nextLine();
+
             System.out.print("Enter flight date (dd-mm-yyyy): ");
             String fli_date=sc.nextLine();
-//            newFlight.add(fli_date);
+
             System.out.print("Enter flight time: ");
-            //aasc.nextLine();
+
             String fli_tim=sc.nextLine();
             Flight fli=new Flight(fli_num,fli_from,fli_to,fli_tim,fli_date,price);
             index.add(fli);
-            System.out.println("\n"+fli.toString());
-//            newFlight.add(fli_tim);
-            //System.out.print("Enter Flight Code(Should be unique): ");
-           // ArrayList flightRef[1]=new ArrayList();
+            System.out.println("\n"+fli.toString()+"\n");
+            drama(" Adding");
             System.out.println("New flight added to Amrita Domestic\n");
-//            System.out.println(newFlight);
-//            flightMain.add(newFlight);
-            //Flight refVar= new Flight(newFlight);
+
 
         }
         else if(mainChoice==2){
@@ -130,18 +122,21 @@ public class Main {
         if (mainChoice == 1) {
             boolean ch=true;
             while(ch==true){
+                System.out.print("Enter From City : ");
+                String from = sc.nextLine().toLowerCase();
             System.out.print("Enter the Destination City : ");
-            String to = sc.nextLine();
-            System.out.print("Enter From City : ");
-            String from = sc.nextLine();
+            String to = sc.nextLine().toLowerCase();
             System.out.print("Enter The Date of Travel(DD-MM-YYYY) : ");
             String date = sc.nextLine();
             int f=0;
             try{
-            for (int j = 0; j < 200; j++) {
+                System.out.println("Searching for flight from "+from+" to "+to+ " on "+date);
                 drama("Searching");
-
-                if (index.get(j).getFroDesti() == from && index.get(j).getToDesti() == to && index.get(j).getFdate() == date) {
+            for (int j = 0; j < 200; j++) {
+                String q=index.get(j).getFroDesti();
+                String w=index.get(j).getToDesti();
+                String dae=index.get(j).getFdate();
+                if ((q.equals(from)) && (w.equals(to)) && (dae.equals(date))) {
                     System.out.println("All the Flights : ");
                     String fli = index.get(j).toString();
                     System.out.println(fli);
@@ -152,12 +147,12 @@ public class Main {
                 catch(Exception n) {
                     if (f == 0) {
                         System.out.println(" No result found,  Try searching for other dates ");
-                        System.out.println("[Y : Search other flights]    [N : Exit]");
+                        System.out.print("[Y : Search other flights]    [N : Exit]");
                         String c=sc.nextLine();
                         if(c.charAt(0)=='Y' || c.charAt(0)=='y'){
                             System.out.println();
                         }
-                        if(c.charAt(0)=='N' || c.charAt(0)=='n'){
+                        else if(c.charAt(0)=='N' || c.charAt(0)=='n'){
                             ch=false;
                         }
                         else{
@@ -212,6 +207,13 @@ public class Main {
             System.out.println("-----------Welcome-----------\n");
             System.out.println("Are you a Passenger or Airline admin?");
             System.out.print("[Passenger: p] ; [Airline Admin: a], input: ");
+            //healper
+            Flight fli=new Flight(233,"kochi","delhi","0800hrs","12-01-2022",7599);
+            index.add(fli);
+            fli=new Flight(256,"delhi","kolkata","1300hrs","16-01-2022",6999);
+            index.add(fli);
+            fli=new Flight(345,"chennai","mumbai","0700hrs","13-01-2022",5999);
+            index.add(fli);
             String inp=sc.nextLine();
             Byte pasWod=0;
             // paswod = 0 for invalid person for everything
