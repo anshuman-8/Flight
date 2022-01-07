@@ -177,7 +177,8 @@ public class Main {
 //                                    String yn = sc.nextLine();
 //                                }
 //                            }
-                            Booking.book(choseNum,index);
+                            Booking.book(choseNum,index,name);
+                            break;
                         }
                         else if(c.charAt(0)=='N' || c.charAt(0)=='n'){
                             ch=false;
@@ -193,6 +194,15 @@ public class Main {
                 }
             }
         }
+        else if (mainChoice == 2){
+            System.out.println("Search pnr");
+        }
+        else if(mainChoice == 3){
+            System.out.println("Deleting ticket");
+        }
+        else{
+            System.out.println("Invalid input ");
+        }
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------main
@@ -200,6 +210,13 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         byte ch=1;
+        //healper
+        Flight fli=new Flight(233,"kochi","delhi","0800hrs","12-01-2022",7599);
+        index.add(fli);
+        fli=new Flight(256,"delhi","kolkata","1300hrs","16-01-2022",6999);
+        index.add(fli);
+        fli=new Flight(345,"chennai","mumbai","0700hrs","13-01-2022",5999);
+        index.add(fli);
 
         while(ch==1){
             System.out.println("\n\n---***Amrita Airlines***---");
@@ -207,13 +224,6 @@ public class Main {
             System.out.println("-----------Welcome-----------\n");
             System.out.println("Are you a Passenger or Airline admin?");
             System.out.print("[Passenger: p] ; [Airline Admin: a], input: ");
-            //healper
-            Flight fli=new Flight(233,"kochi","delhi","0800hrs","12-01-2022",7599);
-            index.add(fli);
-            fli=new Flight(256,"delhi","kolkata","1300hrs","16-01-2022",6999);
-            index.add(fli);
-            fli=new Flight(345,"chennai","mumbai","0700hrs","13-01-2022",5999);
-            index.add(fli);
             String inp=sc.nextLine();
             Byte pasWod=0;
             // paswod = 0 for invalid person for everything
