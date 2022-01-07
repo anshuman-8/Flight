@@ -18,6 +18,10 @@ class Booking extends Passenger {
         int pnr;
         static int n=1;
 
+        public String getName(){
+            return this.name;
+        }
+
     public static ArrayList<Booking> khata=new ArrayList<Booking>();
 
         Booking(String name, int pflightnum, int passengers, boolean snack,int pnr){
@@ -58,7 +62,7 @@ class Booking extends Passenger {
                  if (p){
                      System.out.println("\n your booking is complete");
                      int pnr=n;
-                     System.out.println("Your PNR is "+pnr);
+                     System.out.println("Your PNR is AM"+pnr);
                      Booking b= new Booking(name,num,yn,sna,pnr);
                      khata.add(b);
                      System.out.println("\nDo you want to download Ticket : ");
@@ -124,7 +128,7 @@ class Booking extends Passenger {
                 writer.write("Ticket");
                 writer.append("\n\n\n-----------***Amrita Airlines***--------------\n\n\n");
                 writer.append(" Passengr name : "+name+"      Passenger(s): "+passengers+"\n");
-                writer.append(" PNR :"+pnr+"\n");
+                writer.append(" PNR : AM"+pnr+"\n");
                 writer.append(" \nFlight Details: \n");
                 writer.append(" Flight Number : "+Main.index.get(j).getNum()+"     From "+Main.index.get(j).getFroDesti()+"  to "+Main.index.get(j).getToDesti()+"\n");
                 writer.append(" Date "+Main.index.get(j).getFdate()+"    Time : "+Main.index.get(j).getFtime()+"\n");
@@ -136,5 +140,50 @@ class Booking extends Passenger {
             }catch (Exception e){
                 System.out.println(" Sorry, some error occurred while Download");
             }
+     }
+
+    public int getPflightnum() {
+        return pflightnum;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public int getPnr() {
+        return pnr;
+    }
+
+    public boolean isSnack() {
+        return snack;
+    }
+
+    public void displayTic(int j){
+         System.out.println("   Ticket   \n");
+         System.out.println("   Name : "+khata.get(j).getName()+ "       Number of passengers : "+khata.get(j).getPassengers());
+        System.out.println("    PNR Number : AM"+khata.get(j).getPnr());
+//        String from,to,date,tim="nil";
+        String from="nil";
+        String to="nil";
+        String date="nil";
+        String tim="nil";
+        for (int i = 0; i < 200; i++){
+            if(Main.index.get(i).getNum()==khata.get(j).getPflightnum()){
+                from=Main.index.get(i).getFroDesti();
+                to=Main.index.get(i).getToDesti();
+                date=Main.index.get(i).getFdate();
+                tim=Main.index.get(i).getFtime();
+            }
+        }
+        System.out.println("    Flight Number : "+khata.get(j).getPflightnum()+"      Flight  "+from+" -> "+to);
+        System.out.println("        Date : "+date+"      Time : "+tim);
+         if (khata.get(j).isSnack()){
+             String snack="YES";
+         }
+         else{
+             String snack="NO";
+        }
+        System.out.println("    On Flight Snack taken : "+snack);
+//        System.out.println("    Total cost of the trip : "+khata.get(j).);
      }
 }

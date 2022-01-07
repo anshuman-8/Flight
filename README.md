@@ -1,3 +1,4 @@
 # Flight
 
-This repository is for my Oop's semester project.
+This repository is for my OOP's semester project.
+

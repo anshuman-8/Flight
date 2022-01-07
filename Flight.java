@@ -96,18 +96,4 @@ public class Flight {
         return one + two + three ;
     }
 
-
-
-    //    static ArrayList<ArrayList> flight;
-//    static int num;
-//
-//    public Flight(ArrayList flights){
-//        flight.add(flights);
-//    }
-//    public static int getNum(){
-//        return num;
-//    }
-//    public static ArrayList searchFli(){
-//
-//    }
 }

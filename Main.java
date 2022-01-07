@@ -20,90 +20,89 @@ public class Main {
 
 }
    protected static void adminMethod(){
-        Scanner sc= new Scanner(System.in);
-        System.out.println(" Welcome Admin, What do you want to do next: ");
-        System.out.println("[1 : Add flight ]");
-        System.out.println("[2 : Remove flight]");
-        System.out.println("[3 : Display all flights]");
-        byte mainChoice=sc.nextByte();
-        if(mainChoice==1){
-            System.out.println("Scheduling a new flight\n ");
-            System.out.print("Enter the flight number: ");
-            int fli_num=sc.nextInt();
-            sc.nextLine();
+        byte ach=1;
+        while (ach==1) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println(" Welcome Admin, What do you want to do next: ");
+            System.out.println("[1 : Add flight ]");
+            System.out.println("[2 : Remove flight]");
+            System.out.println("[3 : Display all flights]");
+            byte mainChoice = sc.nextByte();
+            if (mainChoice == 1) {
+                System.out.println("Scheduling a new flight\n ");
+                System.out.print("Enter the flight number: ");
+                int fli_num = sc.nextInt();
+                sc.nextLine();
 
-            System.out.print("Enter flight from City: ");
-            String fli_from=sc.nextLine().toLowerCase();
+                System.out.print("Enter flight from City: ");
+                String fli_from = sc.nextLine().toLowerCase();
 
-            System.out.print("Enter flight Destination City: ");
-            String fli_to=sc.nextLine().toLowerCase();
+                System.out.print("Enter flight Destination City: ");
+                String fli_to = sc.nextLine().toLowerCase();
 
-            System.out.print("Enter cost per ticket: ");
-            int price=sc.nextInt();
-            sc.nextLine();
+                System.out.print("Enter cost per ticket: ");
+                int price = sc.nextInt();
+                sc.nextLine();
 
-            System.out.print("Enter flight date (dd-mm-yyyy): ");
-            String fli_date=sc.nextLine();
+                System.out.print("Enter flight date (dd-mm-yyyy): ");
+                String fli_date = sc.nextLine();
 
-            System.out.print("Enter flight time: ");
+                System.out.print("Enter flight time: ");
 
-            String fli_tim=sc.nextLine();
-            Flight fli=new Flight(fli_num,fli_from,fli_to,fli_tim,fli_date,price);
-            index.add(fli);
-            System.out.println("\n"+fli.toString()+"\n");
-            drama(" Adding");
-            System.out.println("New flight added to Amrita Domestic\n");
+                String fli_tim = sc.nextLine();
+                Flight fli = new Flight(fli_num, fli_from, fli_to, fli_tim, fli_date, price);
+                index.add(fli);
+                System.out.println("\n" + fli.toString() + "\n");
+                drama(" Adding");
+                System.out.println("New flight added to Amrita Domestic\n");
 
-
-        }
-        else if(mainChoice==2){
-            System.out.print("\nEnter The Flight number to be remove: ");
-            int n=sc.nextInt();
-            sc.nextLine();
-            for(int j=0;j<200;j++){
-                if(index.get(j).getNum()==n){
-                    String fli=index.get(j).toPrint();
-                    System.out.println(fli);
-                    System.out.println("Do you really want to Delete this Flight ? ");
-                    System.out.print("[yes: Y]  [No: N]  :");
-                    String yn=sc.nextLine();
-                    if(yn.charAt(0)=='Y' || yn.charAt(0)=='y'){
-                        index.remove(j);
-                        drama("Deleting ");
-                        System.out.println("\n"+fli+" Has been Deleted\n ");
-                        break;
-                    }
-                    else if(yn.charAt(0)=='N' || yn.charAt(0)=='n'){
-                        break;
+            }
+            else if (mainChoice == 2) {
+                System.out.print("\nEnter The Flight number to be remove: ");
+                int n = sc.nextInt();
+                sc.nextLine();
+                for (int j = 0; j < 200; j++) {
+                    if (index.get(j).getNum() == n) {
+                        String fli = index.get(j).toPrint();
+                        System.out.println(fli);
+                        System.out.println("Do you really want to Delete this Flight ? ");
+                        System.out.print("[yes: Y]  [No: N]  :");
+                        String yn = sc.nextLine();
+                        if (yn.charAt(0) == 'Y' || yn.charAt(0) == 'y') {
+                            index.remove(j);
+                            drama("Deleting ");
+                            System.out.println("\n" + fli + " Has been Deleted\n ");
+                            break;
+                        } else if (yn.charAt(0) == 'N' || yn.charAt(0) == 'n') {
+                            break;
+                        }
                     }
                 }
-            }
 
 
-        }
-        else if(mainChoice==3){
-            int tot=0;
-            try{
-            for (int i=0;i<100;i++){
-//              try {
-//                  System.out.println("\n " + index[i].getNum() + "" + index[i].getFroDesti() + "" + index[i].getToDesti()
-//                  + "" + index[i].getFprice() + "" + index[i].getFdate() + "" + index[i].getFtime() + "");
-//                  tot++;
-//              }
-//              catch (Exception e){
-//                  Exception vcxfg=e;
-//              }
-                System.out.println("\n"+index.get(i).toString());
-                tot++;
-            }
-            }
-            catch(Exception e){
-                System.out.println("total "+tot+" displayed");
-            }
+            } else if (mainChoice == 3) {
+                int tot = 0;
+                try {
+                    for (int i = 0; i < 100; i++) {
+                        System.out.println("\n" + index.get(i).toString());
+                        tot++;
+                    }
+                } catch (Exception e) {
+                    System.out.println("total " + tot + " displayed");
+//                    System.out.println("Do Want to Continue as ADMIN or exit(logout) ");
 
-        }
-        else{
-            System.out.println(" Invalid input ");
+                }
+
+            } else {
+                System.out.println(" Invalid input ");
+            }
+            System.out.println("Do Want to Continue as ADMIN or exit(logout) ");
+            System.out.println("[Continue : Y]   [Exit : N] ");
+            String adexit=sc.nextLine();
+            if (adexit.charAt(0)=='N' || adexit.charAt(0)=='n'){
+                System.out.println("\nExiting out as admin\n");
+                ach=0;
+            }
         }
     }
 // -----------------------------------------------------------------------------------------------------------------------------------passenger
@@ -168,15 +167,6 @@ public class Main {
                         System.out.println("[Y : Booking]  [A : Search for another flight]  [N : Exit]");
                         String c=sc.nextLine();
                         if(c.charAt(0)=='Y' || c.charAt(0)=='y'){
-//                            for(int j=0;j<200;j++){
-//                                if(index.get(j).getNum()==choseNum) {
-//                                    String fli = index.get(j).toPrint();
-//                                    System.out.println(fli);
-//                                    System.out.println("Do you really want to Delete this Flight ? ");
-//                                    System.out.print("[yes: Y]  [No: N]  :");
-//                                    String yn = sc.nextLine();
-//                                }
-//                            }
                             Booking.book(choseNum,index,name);
                             break;
                         }
@@ -196,9 +186,15 @@ public class Main {
         }
         else if (mainChoice == 2){
             System.out.println("Search pnr");
+            for(int i=0;i<200;i++){
+                if (Booking.khata.get(i).getName()==name){
+                    // print details so make method for that
+                }
+            }
         }
         else if(mainChoice == 3){
             System.out.println("Deleting ticket");
+            System.out.println("Do you want to delete thg ticket?");
         }
         else{
             System.out.println("Invalid input ");
@@ -230,7 +226,7 @@ public class Main {
             // paswod =1 for Airline Admin
             // paswod = 2 for Passenger
             if(inp.charAt(0) == 'A' || inp.charAt(0)=='a'){
-                System.out.print("Enter Admin Password: ");
+                System.out.print("Enter Admin Password: ");  // Password is meadmin
                 String password=sc.nextLine();
                 // if else for admin password check
                 if(password.equals("meadmin")){
