@@ -158,7 +158,7 @@ class Booking extends Passenger {
         return snack;
     }
 
-    public void displayTic(int j){
+    public static void displayTic(int j){
          System.out.println("   Ticket   \n");
          System.out.println("   Name : "+khata.get(j).getName()+ "       Number of passengers : "+khata.get(j).getPassengers());
         System.out.println("    PNR Number : AM"+khata.get(j).getPnr());
@@ -167,6 +167,7 @@ class Booking extends Passenger {
         String to="nil";
         String date="nil";
         String tim="nil";
+        try{
         for (int i = 0; i < 200; i++){
             if(Main.index.get(i).getNum()==khata.get(j).getPflightnum()){
                 from=Main.index.get(i).getFroDesti();
@@ -174,16 +175,27 @@ class Booking extends Passenger {
                 date=Main.index.get(i).getFdate();
                 tim=Main.index.get(i).getFtime();
             }
+        }}
+        catch (Exception e){
         }
         System.out.println("    Flight Number : "+khata.get(j).getPflightnum()+"      Flight  "+from+" -> "+to);
         System.out.println("        Date : "+date+"      Time : "+tim);
+        String snac="NO";
          if (khata.get(j).isSnack()){
-             String snack="YES";
+             snac="YES";
          }
-         else{
-             String snack="NO";
-        }
-        System.out.println("    On Flight Snack taken : "+snack);
+        System.out.println("    On Flight Snack taken : "+snac);
 //        System.out.println("    Total cost of the trip : "+khata.get(j).);
+     }
+
+     public static void delTicket(String name){
+            try {
+                for (int k = 0; k < 100; k++) {
+                    if (khata.get(k).getName() == name) {
+                        khata.remove(k);
+                    }
+                }
+            }catch (Exception e){
+            }
      }
 }
