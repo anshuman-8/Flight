@@ -1,4 +1,6 @@
 # Flight
 
-This repository is for my OOP's semester project.
+### Flight Ticket Booking / Management System 
+This repository is for my **OOP's** semester project.
+
 

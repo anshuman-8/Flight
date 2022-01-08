@@ -25,7 +25,6 @@ public class Flight {
         this.ftime=ftime;
         this.fdate=fdate;
         this.fprice=price;
-        //count=ind;
     }
 
 

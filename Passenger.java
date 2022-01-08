@@ -8,9 +8,14 @@ import java.util.*;
 public class Passenger {
     String name;
     int age;
-
+//
+//    Passenger(String n,int a){
+//        this.name=n;
+//        this.age=a;
+//    }
 
 }
+
 class Booking extends Passenger {
         int pflightnum;
         int passengers;
@@ -22,6 +27,22 @@ class Booking extends Passenger {
             return this.name;
         }
 
+        public int getPflightnum() {
+            return pflightnum;
+        }
+
+        public int getPassengers() {
+            return passengers;
+        }
+
+        public int getPnr() {
+            return pnr;
+        }
+
+        public boolean isSnack() {
+            return snack;
+        }
+
     public static ArrayList<Booking> khata=new ArrayList<Booking>();
 
         Booking(String name, int pflightnum, int passengers, boolean snack,int pnr){
@@ -31,8 +52,8 @@ class Booking extends Passenger {
             this.snack=snack;
             this.pnr=pnr;
             n+=1;
-
     }
+
      public static void book(int num,ArrayList<Flight> index,String name){
          Scanner sc=new Scanner(System.in);
          try{
@@ -75,7 +96,8 @@ class Booking extends Passenger {
                  }
 
              }
-         }}catch (Exception e){
+         }
+         }catch (Exception e){
              System.out.println("done payment");
          }
      }
@@ -123,6 +145,7 @@ class Booking extends Passenger {
      static void ticket(String name,int pnr,int j, String snack,int passengers, int cost ){
             try {
                 File ticketfile = new File("/home/anshuman/Downloads/Ticket.txt");
+            //     File ticketfile = new File("C:\Users\SomeUser\Downloads");  for windows user
                 ticketfile.createNewFile();
                 FileWriter writer=new FileWriter(ticketfile);
                 writer.write("Ticket");
@@ -138,25 +161,9 @@ class Booking extends Passenger {
                 Main.drama("Downloading ");
                 writer.close();
             }catch (Exception e){
-                System.out.println(" Sorry, some error occurred while Download");
+                System.out.println(" Sorry, some error occurred while Downloading");
             }
      }
-
-    public int getPflightnum() {
-        return pflightnum;
-    }
-
-    public int getPassengers() {
-        return passengers;
-    }
-
-    public int getPnr() {
-        return pnr;
-    }
-
-    public boolean isSnack() {
-        return snack;
-    }
 
     public static void displayTic(int j){
          System.out.println("   Ticket   \n");
@@ -185,7 +192,6 @@ class Booking extends Passenger {
              snac="YES";
          }
         System.out.println("    On Flight Snack taken : "+snac);
-//        System.out.println("    Total cost of the trip : "+khata.get(j).);
      }
 
      public static void delTicket(String name){

@@ -3,12 +3,13 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
+
     public static ArrayList<Flight> index=new ArrayList<Flight>();
-//--------------------------------------------------------------------------------------------------------------------------------admin
-    protected static void drama(String text){
+
+    protected static void drama(String text){ // just to waste 3 seconds
         System.out.print(text);
         try{
-        TimeUnit.SECONDS.sleep(1);
+            TimeUnit.SECONDS.sleep(1);
             System.out.print(".");
             TimeUnit.SECONDS.sleep(1);
             System.out.print(".");
@@ -16,9 +17,11 @@ public class Main {
             System.out.println(".\n");}
         catch(Exception e){
             System.out.println();
+        }
     }
 
-}
+//--------------------------------------------------------------------------------------------------------------------------------admin
+
    protected static void adminMethod(){
         byte ach=1;
         while (ach==1) {
@@ -180,7 +183,8 @@ public class Main {
                     }
                 }
             } else if (mainChoice == 2) {
-                System.out.println("Search pnr");
+                System.out.println("Searching pnr");
+                drama("Searching ");
                 try {
                     for (int i = 0; i < 200; i++) {
                         if (Booking.khata.get(i).getName() == name) {
@@ -214,12 +218,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         byte ch=1;
+
         //healper
-        Flight fli=new Flight(233,"kochi","delhi","0800hrs","12-01-2022",7599);
+        Flight fli=new Flight(233,"kochi","delhi","0800hrs","21-01-2022",7599);
         index.add(fli);
-        fli=new Flight(256,"delhi","kolkata","1300hrs","16-01-2022",6999);
+        fli=new Flight(256,"delhi","kolkata","1300hrs","21-01-2022",6999);
         index.add(fli);
-        fli=new Flight(345,"chennai","mumbai","0700hrs","13-01-2022",5999);
+        fli=new Flight(345,"chennai","mumbai","0700hrs","21-01-2022",5999);
+        index.add(fli);
+        fli=new Flight(513,"pune","srinagar","1630hrs","21-01-2022",7599);
         index.add(fli);
 
         while(ch==1){
