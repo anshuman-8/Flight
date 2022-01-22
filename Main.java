@@ -61,10 +61,12 @@ public class Main {
                 System.out.println("New flight added to Amrita Domestic\n");
 
             }
+            // Logging out of admin privilege
             else if(mainChoice==4){
                     ach=0;
                     drama("Logging out Admin ");
             }
+            // Deleting a particular flight
             else if (mainChoice == 2) {
                 System.out.print("\nEnter The Flight number to be remove: ");
                 int n = sc.nextInt();
@@ -87,7 +89,7 @@ public class Main {
                     }
                 }
 
-
+            // To Display all flight
             } else if (mainChoice == 3) {
                 int tot = 0;
                 try {
@@ -97,10 +99,10 @@ public class Main {
                     }
                 } catch (Exception e) {
                     System.out.println("total " + tot + " displayed\n");
-//                    System.out.println("Do Want to Continue as ADMIN or exit(logout) ");
+
                 }
 
-
+            // for In valid input
             } else {
                 System.out.println(" Invalid input ");
             }
@@ -115,7 +117,7 @@ public class Main {
         String name = sc.nextLine();
         byte pch=1;
         while (pch==1) {
-            System.out.println(" Hello " + name + " what would you like to do next: ");
+            System.out.println(" Hello " + name + " what would you like to do next: "); // Passenger choice input
             System.out.println("[1 : Search & Book flight ]");
             System.out.println("[2 : Check PNR status]");
             System.out.println("[3 : Cancel ticket ]");
@@ -125,7 +127,7 @@ public class Main {
 
             if (mainChoice == 1) {
                 boolean ch = true;
-                while (ch == true) {
+                while (ch) {
                     System.out.print("Enter From City : ");
                     String from = sc.nextLine().toLowerCase();
                     System.out.print("Enter the Destination City : ");
@@ -201,7 +203,7 @@ public class Main {
                 if (delch.charAt(0) == 'y' || delch.charAt(0) == 'Y') {
                     drama(" Deleting ");
                     Booking.delTicket(name);
-                    System.out.println("Your Ticket has been deleted \n");
+//                    System.out.println("Your Ticket has been deleted \n");
                 }
             }else if(mainChoice==4){
                 pch=0;
@@ -219,7 +221,7 @@ public class Main {
         Scanner sc=new Scanner(System.in);
         byte ch=1;
 
-        //healper
+        // helper
         Flight fli=new Flight(233,"kochi","delhi","0800hrs","21-01-2022",7599);
         index.add(fli);
         fli=new Flight(256,"delhi","kolkata","1300hrs","21-01-2022",6999);
@@ -259,7 +261,7 @@ public class Main {
             else{
                 System.out.println(" Invalid input ");
             }
-            System.out.println("Do you want to continue? ");
+            System.out.println("Do you want to continue in Flight App? ");
             System.out.print("[Y:yes]  [N: Exit] : ");
             String che=sc.nextLine();
             if (che.charAt(0)=='n'|| che.charAt(0)=='N'){

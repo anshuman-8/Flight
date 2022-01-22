@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.*;
 
-public class Passenger {
-    String name;
-    int age;
-//
+public interface Passenger {
+    String name = null;
+//    int age;
+
 //    Passenger(String n,int a){
 //        this.name=n;
 //        this.age=a;
@@ -16,7 +16,8 @@ public class Passenger {
 
 }
 
-class Booking extends Passenger {
+class Booking implements Passenger { // implementing Passenger class
+        String name;
         int pflightnum;
         int passengers;
         boolean snack;
@@ -43,7 +44,7 @@ class Booking extends Passenger {
             return snack;
         }
 
-    public static ArrayList<Booking> khata=new ArrayList<Booking>();
+    public static ArrayList<Booking> khata=new ArrayList<Booking>(); // Arraylist of all bookings
 
         Booking(String name, int pflightnum, int passengers, boolean snack,int pnr){
             this.name=name;
@@ -83,7 +84,7 @@ class Booking extends Passenger {
                  if (p){
                      System.out.println("\n your booking is complete");
                      int pnr=n;
-                     System.out.println("Your PNR is AM"+pnr);
+                     System.out.println("Your PNR is AM0"+pnr);
                      Booking b= new Booking(name,num,yn,sna,pnr);
                      khata.add(b);
                      System.out.println("\nDo you want to download Ticket : ");
@@ -145,19 +146,19 @@ class Booking extends Passenger {
      static void ticket(String name,int pnr,int j, String snack,int passengers, int cost ){
             try {
                 File ticketfile = new File("/home/anshuman/Downloads/Ticket.txt");
-            //     File ticketfile = new File("C:\Users\SomeUser\Downloads");  for windows user
+            //     File ticketfile = new File("C:\Users\SomeUser\Downloads"); // for windows user
                 ticketfile.createNewFile();
                 FileWriter writer=new FileWriter(ticketfile);
                 writer.write("Ticket");
                 writer.append("\n\n\n-----------***Amrita Airlines***--------------\n\n\n");
                 writer.append(" Passengr name : "+name+"      Passenger(s): "+passengers+"\n");
-                writer.append(" PNR : AM"+pnr+"\n");
-                writer.append(" \nFlight Details: \n");
-                writer.append(" Flight Number : "+Main.index.get(j).getNum()+"     From "+Main.index.get(j).getFroDesti()+"  to "+Main.index.get(j).getToDesti()+"\n");
+                writer.append(" \nPNR : AM0"+pnr+"\n");
+                writer.append(" \nFlight Details: \n\n");
+                writer.append(" Flight Number : "+Main.index.get(j).getNum()+"     From:  "+Main.index.get(j).getFroDesti()+"  to "+Main.index.get(j).getToDesti()+"\n");
                 writer.append(" Date "+Main.index.get(j).getFdate()+"    Time : "+Main.index.get(j).getFtime()+"\n");
                 writer.append(" \n On flight food: "+snack+"\n");
                 writer.append("  Total cost : "+cost);
-                writer.append("     \nHappy Journey !!!");
+                writer.append("    \n\nHappy Journey !!!");
                 Main.drama("Downloading ");
                 writer.close();
             }catch (Exception e){
@@ -165,11 +166,13 @@ class Booking extends Passenger {
             }
      }
 
+     // To display Ticket
     public static void displayTic(int j){
          System.out.println("   Ticket   \n");
-         System.out.println("   Name : "+khata.get(j).getName()+ "       Number of passengers : "+khata.get(j).getPassengers());
-        System.out.println("    PNR Number : AM"+khata.get(j).getPnr());
-//        String from,to,date,tim="nil";
+        System.out.println("----------------------------------------------------------------------------");
+        System.out.println("   Name : "+khata.get(j).getName()+ "       Number of passengers : "+khata.get(j).getPassengers());
+        System.out.println("    PNR Number : AM0"+khata.get(j).getPnr());
+
         String from="nil";
         String to="nil";
         String date="nil";
@@ -181,9 +184,11 @@ class Booking extends Passenger {
                 to=Main.index.get(i).getToDesti();
                 date=Main.index.get(i).getFdate();
                 tim=Main.index.get(i).getFtime();
+                break;
             }
         }}
         catch (Exception e){
+           // System.out.println("No ticket found !!! ");
         }
         System.out.println("    Flight Number : "+khata.get(j).getPflightnum()+"      Flight  "+from+" -> "+to);
         System.out.println("        Date : "+date+"      Time : "+tim);
@@ -192,16 +197,22 @@ class Booking extends Passenger {
              snac="YES";
          }
         System.out.println("    On Flight Snack taken : "+snac);
+        System.out.println("---------------------------------------------------------------------------\n");
      }
 
+//   Deleting a Ticket
      public static void delTicket(String name){
             try {
                 for (int k = 0; k < 100; k++) {
                     if (khata.get(k).getName() == name) {
                         khata.remove(k);
+                        System.out.println("Your Ticket has been deleted \n");
+                        break;
                     }
                 }
             }catch (Exception e){
+                System.out.println("Unable to delete the Booking");
+                System.out.println("Contact costumer for assistance \n ");
             }
      }
 }
